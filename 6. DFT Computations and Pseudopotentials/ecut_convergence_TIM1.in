@@ -1,0 +1,66 @@
+# FAZnF3
+# convergence with respect to ecut and calculation of total energy
+
+ndtset 15           # file runs 15 datasets
+
+# Definition of the k-point grids
+kptopt 1            # Option for the automatic generation of k points,
+                    # taking into account the symmetry
+nshiftk 1           # Perform one shift on the k-points
+shiftk  0.0 0.0 0.5    # the coordinate of the shift
+
+ngkpt 4 4 1        
+
+getwfk -1           # This is to speed up the calculation, by
+                    # restarting from previous wavefunctions,
+                    # transferred from the old to the new k-points
+
+ecut: 12             # the initial value of ecut is 12
+ecut+ 2              # each iteration, the value of ecut increments by 4
+
+pawecutdg 100
+
+pawovlp 10
+
+
+# Definition of the unit cell 
+acell 4.98934232891 4.46658247871 4.78655352951 Angstrom  # First two values obtained from experiments
+
+angdeg  71.3281758062 83.5250004781 87.3760097498 # angdeg is similar to rprim
+
+# Definition of the atom types
+ntypat 5              # There are five types of atoms
+znucl 30 9 7 1 6          # atomic numbers of the 5 types of atoms
+
+# Definition of the atoms
+natom 12             # There are twelve atoms
+typat 1 2 2 2 3 3 4 4 4 4 4 5 # the atom types
+xred                  # The "xred" keyword indicates the location of
+                      # the atoms, in reduced coordinates
+
+  0.611538003001861   0.306887020509947   0.504426427245889   #ge
+   0.675408024603072   0.883955314725625   0.461758968691669   #f
+  0.999476405383014   0.353832169053582   0.474730511086996   #f1.0
+   0.619217673275109   0.477646442219886   0.080454128314209   #F1.0
+   0.147690030826716   0.702304172902465   0.823905444887572   #n1.0
+   0.223393169912733   0.987431460777209   0.134629751999682   #N1.0
+  0.335911930798204   0.606381632463417   0.837998021252552   #h1.0
+  0.414500406817247   0.905758309600458   0.161610603101217   #H1.0
+  0.019078130215476   0.634173874313916   0.706846406789801   #h1.0
+ 0.141814762172167   0.121501839583232   0.260096219117287  #H 1.0
+   0.861084913609844   0.968954947011348   0.983310880745428  #h 1.0
+  0.067046549384507   0.888162816838971   0.980132636767699  # c 1.0
+# Definition of SCF procedure
+nstep 20            # Maximal number of SCF procedures
+toldfe 1.0d-10      # SCF cycle will stop when, twice in a row,
+                    # delta(etotal) < toldfe for two consecutive
+                    # evaluations of etotal
+diemac 2.0         # Precondition the SCF cycle
+
+                    # Here, we follow the prescription for wide
+                    # gap semiconductors
+
+
+
+
+

@@ -151,7 +151,3 @@ plt.tight_layout()
 plt.savefig('bgrun1013.png')
 plt.show()
 plt.close()
-
-predictions = pd.DataFrame()
-sub['Bandgap'] = y_test_E_pred
-sub.to_csv('output_band_gap.csv',index=False)

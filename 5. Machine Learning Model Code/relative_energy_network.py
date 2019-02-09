@@ -156,7 +156,3 @@ plt.tight_layout()
 plt.savefig('rerun1013.png')
 plt.show()
 plt.close()
-
-predictions = pd.DataFrame()
-sub['Relative_energy1'] = y_test_E_pred
-sub.to_csv('output_relative_energy.csv',index=False)

@@ -55,7 +55,8 @@ random_grid = {'n_estimators': num_trees,
 print("Random grid")
  
 rf = RandomForestRegressor(random_state = 42)
-rf_grid_search = GridSearchCV(rf, random_grid, cv=5, scoring="neg_mean_squared_error", verbose = 1)
+rf_grid_search = GridSearchCV(rf, random_grid, cv=5, 
+                              scoring="neg_mean_squared_error", verbose = 1)
 print(train.values)
 rf_grid_search.fit( train.values, y_train )  
  
@@ -64,7 +65,8 @@ with open('random_forest_parameters.txt', 'a') as the_file:
  
 test_size = 0.2
 rstate = 42
-X_train_E, X_test_E, y_train_E, y_test_E = train_test_split(X, y_E, test_size=test_size, random_state=rstate)
+X_train_E, X_test_E, y_train_E, y_test_E = train_test_split(X, y_E, 
+                                                            test_size=test_size, random_state=rstate)
  
 # gridsearch parameters
 max_feat = 'sqrt'

@@ -128,7 +128,7 @@ def plot_actual_pred(train_pred, train_actual, test_pred, test_actual, target):
 y_train_E_pred = rf_E.predict(X_train_E)
 y_test_E_pred = rf_E.predict(X_test_E)
  
-rf_E_test_pred = np.expm1(rf_E.predict(test.values))
+rf_E_test_pred = rf_E.predict(test.values)
  
 sub = pd.DataFrame()
 sub['Bandgap_GGA'] = rf_E_test_pred
@@ -151,3 +151,7 @@ plt.tight_layout()
 plt.savefig('bgrun1013.png')
 plt.show()
 plt.close()
+
+predictions = pd.DataFrame()
+sub['Bandgap'] = y_test_E_pred
+sub.to_csv('output_band_gap.csv',index=False)

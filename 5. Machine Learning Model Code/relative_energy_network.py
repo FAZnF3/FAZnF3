@@ -132,7 +132,7 @@ def plot_actual_pred(train_pred, train_actual,
 y_train_E_pred = rf_E.predict(X_train_E)
 y_test_E_pred = rf_E.predict(X_test_E)
  
-rf_E_test_pred = np.expm1(rf_E.predict(test.values))
+rf_E_test_pred = rf_E.predict(test.values)
  
 sub = pd.DataFrame()
 sub['Relative_energy1'] = rf_E_test_pred
@@ -156,3 +156,7 @@ plt.tight_layout()
 plt.savefig('rerun1013.png')
 plt.show()
 plt.close()
+
+predictions = pd.DataFrame()
+sub['Relative_energy1'] = y_test_E_pred
+sub.to_csv('output_relative_energy.csv',index=False)
